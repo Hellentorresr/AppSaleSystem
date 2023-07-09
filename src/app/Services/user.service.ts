@@ -12,7 +12,7 @@ import { User } from '../Interfaces/user';
   providedIn: 'root'
 })
 export class UserService {
-  private urlApi: string = `${environment.endPoint}User/`  //the user endpoint
+  private urlApi: string = `${environment.endPoint}User/`;  //the user endpoint
 
   constructor(private http: HttpClient) { } //dependency injection of http client 
 
