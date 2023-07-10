@@ -10,6 +10,9 @@ import { ProductComponent } from './Pages/product/product.component';
 import { SaleComponent } from './Pages/sale/sale.component';
 import { SaleHistoryComponent } from './Pages/sale-history/sale-history.component';
 import { ReportComponent } from './Pages/report/report.component';
+import { SharedModule } from 'src/app/Reusable/shared/shared.module';
+
+//importing the shared module where all angular material are imported
 
 
 @NgModule({
@@ -23,7 +26,8 @@ import { ReportComponent } from './Pages/report/report.component';
   ],
   imports: [
     CommonModule,
-    LayoutRoutingModule
+    LayoutRoutingModule,
+    SharedModule
   ]
 })
 export class LayoutModule { }
