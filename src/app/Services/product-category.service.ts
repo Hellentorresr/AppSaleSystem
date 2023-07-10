@@ -9,7 +9,7 @@ import { ResponseApi } from '../Interfaces/response-api'; // allows us to receiv
   providedIn: 'root'
 })
 
-export class MenuService {
+export class ProductCategory {
   private urlApi: string = `${environment.endPoint}ProductCategory/`;  //the user endpoint
   constructor(private http: HttpClient) { } //dependency injection of http client 
 
