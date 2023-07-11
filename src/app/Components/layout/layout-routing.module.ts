@@ -6,6 +6,7 @@ import { UserComponent } from './Pages/user/user.component';
 import { ProductComponent } from './Pages/product/product.component';
 import { SaleHistoryComponent } from './Pages/sale-history/sale-history.component';
 import { ReportComponent } from './Pages/report/report.component';
+import { SaleComponent } from './Pages/sale/sale.component';
 
 const routes: Routes = [{
   path: '',
@@ -14,6 +15,7 @@ const routes: Routes = [{
     { path: 'dashboard', component: DashboardComponent }, //url name and then the component
     { path: 'user', component: UserComponent },
     { path: 'product', component: ProductComponent },
+    { path: 'sale', component: SaleComponent },
     { path: 'sale_history', component: SaleHistoryComponent },
     { path: 'Report', component: ReportComponent },
   ]
