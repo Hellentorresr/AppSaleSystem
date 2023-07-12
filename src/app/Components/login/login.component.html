@@ -1,1 +1,68 @@
-<p>login works!</p>
+
+<div class="parent">
+    <div class="hero">
+        <mat-card class="custom-container">
+            <div class="header">
+                <h2>Login</h2>
+            </div>
+
+            <mat-card-content style="margin-bottom: 25px;">
+                <form [formGroup]="loginForm" (ngSubmit)="Login()" class="align">
+
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input type="email" formControlName="email" matInput
+                            autocomplete="on">
+                        <mat-icon matSuffix>mail</mat-icon>
+                    </mat-form-field>
+
+                    <div *ngIf="fc.email.touched">
+                        <div *ngIf="fc.email.invalid">
+                            <div *ngIf="fc.email.errors?.['required']"
+                                class="alert alert-danger ">
+                                Email is required...
+                            </div>
+
+                        </div>
+
+                        <div *ngIf="fc.email.errors?.email"
+                            class="alert alert-danger">
+                            Email is not valid...
+                        </div>
+                    </div>
+
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input [type]="hidePassword ? 'password' : 'text' "
+                            formControlName="password" matInput
+                            autocomplete="off">
+
+                        <button mat-icon-button matSuffix
+                            (click)="hidePassword = !hidePassword" type="button">
+                            <mat-icon maSuffix>{{hidePassword ? 'visibility_off'
+                                :
+                                'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+
+                    <div *ngIf="fc.password.touched">
+                        <div *ngIf="fc.password.errors?.['required']"
+                            class="alert alert-danger ">
+                            Password is required...
+                        </div>
+                    </div>
+
+                    <button class="full-width" mat-raised-button color="primary"
+                        type="submit" [disabled]="loginForm.invalid">Submit
+                        <mat-icon matSuffix>login</mat-icon>
+                    </button>
+                </form>
+            </mat-card-content>
+            <!--When showLoading is true show this footer loading line, this variable is being updated in the
+            login method-->
+            <mat-card-footer>
+                <mat-progress-bar mode="indeterminate" *ngIf="showLoading"></mat-progress-bar>
+            </mat-card-footer>
+        </mat-card>
+    </div>
+</div>
