@@ -4,7 +4,7 @@
     background-image: url('../layout/IMG/salesSystem.png');
     background-size: cover;
     min-width: fit-content;
-    background-position: bottom;
+    background-position:center;
 }
 
 .hero {
