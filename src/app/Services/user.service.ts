@@ -34,7 +34,7 @@ export class UserService {
   }
 
   Update(request: User): Observable<ResponseApi> { //RESPONSEAPI is the response structure I declared
-
+    
     return this.http.put<ResponseApi>(`${this.urlApi}UpdateUser`, request); //the final endpoint
   }
 
