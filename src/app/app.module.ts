@@ -26,6 +26,6 @@ import { SharedModule } from './Reusable/shared/shared.module';
 })
 export class AppModule {
   constructor() {
-    console.log(environment.production); // Logs false for development
+    //console.log(environment.production); // Logs false for development
   }
 }
