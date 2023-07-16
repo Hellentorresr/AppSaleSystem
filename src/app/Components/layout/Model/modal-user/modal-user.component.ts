@@ -33,16 +33,18 @@ export class ModalUserComponent implements OnInit {
     });
 
     if (this.userData) { this.actionName = 'Edit', this.actionButton = 'Update' }; //if userData has values
-    //getting the rol list to show it in the select
-    this._rolService.List().subscribe({
-      next: (data) => { if (data.status) this.rolList = data.value }, //if status == true
-      error: (error: any) => console.error('Error fetching roles:', error)
-    });
   }
 
   /*The ngOnInit() method is a lifecycle hook that is called after the component has been initialized
    and its dependencies have been resolved. It is commonly used for initialization tasks or to fetch data from APIs.*/
   ngOnInit(): void {
+    //getting the rol list to show it in the select
+    this._rolService.List().subscribe({
+      next: (data) => { if (data.status) this.rolList = data.value }, //if status == true
+      error: (error: any) => console.error('Error fetching roles:', error)
+    });
+
+
     //if the dataUser var has data, means that the modal it show Edit, 
     if (this.userData) {
       this.userForm.patchValue({ //  method from FormGroup class. It is used to update the values of the form controls within a form group.
