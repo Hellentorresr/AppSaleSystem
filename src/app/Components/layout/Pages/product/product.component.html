@@ -1,1 +1,89 @@
-<p>product works!</p>
+<h1>Products</h1>
+
+<mat-card style="padding: 20px 40px 40px 40px;">
+
+    <mat-card-title>
+        <button mat-raised-button color="primary" (click)="newProduct()">
+            <mat-icon mat-list-icon>add</mat-icon> New Product
+        </button>
+    </mat-card-title>
+
+    <!-- User table -->
+    <mat-divider style="margin: 1.5rem 0;"></mat-divider>
+    <!-- like the horizontal rul or thematic break from html <hr> -->
+
+    <!--Card content-->
+    <mat-card-content class="dashboard-card-content">
+
+        <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Search</mat-label>
+            <input matInput (keyup)="filterDataTable($event)" #input>
+        </mat-form-field>
+
+        <div class="mat-elevator-z2">
+            <table mat-table [dataSource]="productListData">
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef>Name</th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="descCategory">
+                    <th mat-header-cell *matHeaderCellDef>Category Product</th>
+                    <td mat-cell *matCellDef="let element"> {{element.categoryDescription}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="stock">
+                    <th mat-header-cell *matHeaderCellDef>Stock</th>
+                    <td mat-cell *matCellDef="let element">{{element.stock}}</td>
+                </ng-container>
+
+                   <ng-container matColumnDef="price">
+                    <th mat-header-cell *matHeaderCellDef>Price</th>
+                    <td mat-cell *matCellDef="let element">{{element.price}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef>Status</th>
+                    <td mat-cell *matCellDef="let element"> {{element.active ==
+                        1 ? 'Active' : 'Inactive'}}
+                    </td>
+                </ng-container>
+
+                <!--action button-->
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef>Actions</th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-icon-button color="primary"
+                            (click)="updateProduct(element)">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+
+                        <button mat-icon-button color="warn"
+                            (click)="deleteProduct(element)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="columnsTable"></tr>
+                <tr mat-row *matRowDef="let row; columns:columnsTable;"></tr>
+
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="4">No data found matching the filter {{input.value}}</td>
+                </tr>
+
+            </table>
+
+            <!--Pagination-->
+            <mat-paginator [pageSizeOptions]="[5,10,20,100]" showFirstLastButtons>
+
+            </mat-paginator>
+
+        </div>
+
+    </mat-card-content>
+</mat-card>
