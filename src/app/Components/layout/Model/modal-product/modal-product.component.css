@@ -1,9 +1,12 @@
-form {
-    /* width: 350px; */
-    min-width: 350px;
+.minW{
+    min-height: fit-content;
+    max-width: 325px;
+}
+
+.full-width{
+    margin-top: 5px;
 }
 
 .custom-input {
     min-width: 15.5rem;
-    /* Set the width to 100% to occupy the full width of the parent container */
-}
+} 

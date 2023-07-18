@@ -1,6 +1,6 @@
 <h1>Products</h1>
 
-<mat-card style="padding: 20px 40px 40px 40px;">
+<mat-card class="p-3 m-2">
 
     <mat-card-title>
         <button mat-raised-button color="primary" (click)="newProduct()">
@@ -21,7 +21,8 @@
         </mat-form-field>
 
         <div class="mat-elevator-z2">
-            <table mat-table [dataSource]="productListData">
+          <div class="table-responsive">
+              <table mat-table [dataSource]="productListData" class="shadow p-3 mb-2 bg-white rounded">
 
                 <!-- Position Column -->
                 <ng-container matColumnDef="name">
@@ -77,6 +78,7 @@
                 </tr>
 
             </table>
+          </div>
 
             <!--Pagination-->
             <mat-paginator [pageSizeOptions]="[5,10,20,100]" showFirstLastButtons>
