@@ -1,58 +1,39 @@
 <h2 mat-dialog-title>{{actionName}} Product</h2>
 
-<mat-dialog-content>
+<mat-dialog-content class="container minW" style="text-align: center;">
     <form [formGroup]="productForm">
-        <mat-grid-list cols="1" rowHeight="90px">
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Product name</mat-label>
+            <input type="text" matInput autocomplete="off" formControlName="name">
+            <mat-icon matSuffix>fit_screen</mat-icon>
+        </mat-form-field>
 
-            <mat-grid-tile>
-                <mat-form-field class="full-width" appearance="outline">
-                    <mat-label>Product name</mat-label>
-                    <input type="text" matInput autocomplete="off"
-                        formControlName="name">
-                    <mat-icon matSuffix>fit_screen</mat-icon>
-                </mat-form-field>
-            </mat-grid-tile>
+        <mat-form-field class="custom-input" appearance="outline">
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="idCategory">
+                <mat-option *ngFor="let item of categoryList" [value]="item.idCategory">{{item.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
 
-             <mat-grid-tile>
-                <mat-form-field class="custom-input" appearance="outline">
-                    <mat-label>Category</mat-label>
-                    <mat-select formControlName="idCategory">
-                        <mat-option *ngFor="let item of categoryList"
-                            [value]="item.idCategory">{{item.name}}</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </mat-grid-tile>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Stock</mat-label>
+            <input type="number" matInput autocomplete="off" formControlName="stock">
+            <mat-icon matSuffix>edit_square</mat-icon>
+        </mat-form-field>
 
-             <mat-grid-tile>
-                <mat-form-field class="full-width" appearance="outline">
-                    <mat-label>Stock</mat-label>
-                    <input type="number" matInput autocomplete="off"
-                        formControlName="stock">
-                    <mat-icon matSuffix>edit_square</mat-icon>
-                </mat-form-field>
-            </mat-grid-tile>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Price</mat-label>
+            <input type="text" matInput autocomplete="off" formControlName="price">
+            <mat-icon matSuffix>attach_money</mat-icon>
+        </mat-form-field>
 
-             <mat-grid-tile>
-                <mat-form-field class="full-width" appearance="outline">
-                    <mat-label>Price</mat-label>
-                    <input type="text" matInput autocomplete="off"
-                        formControlName="price">
-                    <mat-icon matSuffix>attach_money</mat-icon>
-                </mat-form-field>
-            </mat-grid-tile>
-
-            <mat-grid-tile>
-                <mat-form-field class="custom-input" appearance="outline">
-                    <mat-label for="active">Status</mat-label>
-
-                    <mat-select id="active" formControlName="active">
-                        <mat-option value="1">Active</mat-option>
-                        <mat-option value="0">Inactive</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </mat-grid-tile>
-
-        </mat-grid-list>
+        <mat-form-field class="custom-input" appearance="outline">
+            <mat-label for="active">Status</mat-label>
+            <mat-select id="active" formControlName="active">
+                <mat-option value="1">Active</mat-option>
+                <mat-option value="0">Inactive</mat-option>
+            </mat-select>
+        </mat-form-field>
     </form>
 </mat-dialog-content>
 
