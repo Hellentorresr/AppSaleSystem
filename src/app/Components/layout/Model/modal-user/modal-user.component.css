@@ -1,23 +1,14 @@
 
 
-mat-form-fild{
-    width: 100%;
-    margin: 10px 10px;
+.minW {
+    min-height: fit-content;
+    max-width: 325px;
 }
 
-.setHeight {
-    height: auto;
-    /* Set the height to auto to adjust based on content */
-    max-height: 90px;
-    /* Set a maximum height if needed */
-}
-
-form{
-    /* width: 350px; */
-   min-width: 350px;
+.full-width {
+    margin-top: 5px;
 }
 
 .custom-input {
     min-width: 15.5rem;
-    /* Set the width to 100% to occupy the full width of the parent container */
 }
