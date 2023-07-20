@@ -102,7 +102,7 @@ export class SaleHistoryComponent implements OnInit, AfterViewInit {
 
     //API Calling
     this._saleService.History(this.formSearch.value.searchBy, this.formSearch.value.number, startingDate, endDate).subscribe({
-      next: (data)=> {if(data.status)this.dataListSale = data.value; else this._util.showAlert('Error fetching the sale history','Error')},
+      next: (data)=> {if(data.status)this.dataListSale = data.value; else this._util.showAlert('Please enter a value to search','Error')},
 
       error: () => this._util.showAlert('Unexpected error occured', 'Error')
     });
