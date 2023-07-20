@@ -10,9 +10,10 @@ import { ProductComponent } from './Pages/product/product.component';
 import { SaleComponent } from './Pages/sale/sale.component';
 import { SaleHistoryComponent } from './Pages/sale-history/sale-history.component';
 import { ReportComponent } from './Pages/report/report.component';
-import { SharedModule } from 'src/app/Reusable/shared/shared.module';
+import { SharedModule } from 'src/app/Reusable/shared/shared.module';//importing the shared module where all angular material are imported
 import { ModalUserComponent } from './Model/modal-user/modal-user.component';
-import { ModalProductComponent } from './Model/modal-product/modal-product.component';//importing the shared module where all angular material are imported
+import { ModalProductComponent } from './Model/modal-product/modal-product.component';
+import { ModalSaledetailsComponent } from './Model/modal-saledetails/modal-saledetails.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { ModalProductComponent } from './Model/modal-product/modal-product.compo
     SaleHistoryComponent,
     ReportComponent,
     ModalUserComponent,
-    ModalProductComponent
+    ModalProductComponent,
+    ModalSaledetailsComponent
   ],
   imports: [
     CommonModule,

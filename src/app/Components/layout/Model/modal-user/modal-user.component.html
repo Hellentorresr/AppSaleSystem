@@ -30,10 +30,6 @@
             </button>
         </mat-form-field>
 
-        <span *ngIf="userForm.get('password').touched && userForm.get('password').invalid"
-            class="alert alert-danger">
-            Password is required...</span>
-
         <mat-form-field class="custom-input" appearance="outline">
             <mat-label for="active">Status</mat-label>
             <mat-select id="active" formControlName="active">

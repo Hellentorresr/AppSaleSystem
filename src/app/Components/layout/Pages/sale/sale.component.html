@@ -121,15 +121,21 @@
         </div>
 
         <!--To generate the sale-->
-        <mat-grid-list cols="4" rowHeight="80px">
-            <mat-grid-tile [colspan]="3"></mat-grid-tile>
-            <mat-grid-tile>
-                <button mat-raised-button color="primary" style="width: 80%;"
-                    [disabled]="productListToSale.length < 1 || blockRegisterButton"
-                    (click)="generateSale()">
-                    <mat-icon>new_label</mat-icon>Generate sale
-                </button>
-            </mat-grid-tile>
-        </mat-grid-list>
+        <div class="mt-3">
+            <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-7 d-flex justify-content-end">
+                    <div>
+                        <button mat-raised-button color="primary"
+                            [disabled]="productListToSale.length < 1 || blockRegisterButton"
+                            (click)="generateSale()"
+                            class="generate-sale-button">
+                            <mat-icon>new_label</mat-icon> Generate sale
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </mat-card-content>
 </mat-card>
