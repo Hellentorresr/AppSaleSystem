@@ -13,7 +13,7 @@ import { UtilityService } from 'src/app/Reusable/utility.service';
 })
 
 export class LoginComponent implements OnInit {
-  loginForm:any;
+  loginForm: any;
   hidePassword: boolean = true;
   showLoading: boolean = false;
 
@@ -40,14 +40,12 @@ export class LoginComponent implements OnInit {
     const request: Login = { email: this.loginForm.value.email, password: this.loginForm.value.password }
 
     this._userService.Login(request).subscribe({
-      next: (data) => {  
+      next: (data) => {
         if (data.status) {
-          this._utility.saveUserSession(data.value); //if status is true store it in the local storage
+          this._utility.saveUserSession(data.value.token); //if status is true store it in the local storage
           this.router.navigate(["pages"])
-          console.log(data.value);
         }
-        else
-        {
+        else {
           //this._utility.showAlert('User account does not exist', 'Opps!');
           this._utility.showAlert(data.message, 'Opps!');
         }
@@ -57,7 +55,5 @@ export class LoginComponent implements OnInit {
 
       error: () => { this._utility.showAlert('An error occurred', 'Opps!'); }
     });
-
-    console.log(this.fc.email)
   }
 }
