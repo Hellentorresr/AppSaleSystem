@@ -9,6 +9,8 @@ import { LoginComponent } from './Components/login/login.component';
 import { LayoutComponent } from './Components/layout/layout.component';
 import { SharedModule } from './Reusable/shared/shared.module';
 
+import { JwtHelperService } from '@auth0/angular-jwt';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +23,7 @@ import { SharedModule } from './Reusable/shared/shared.module';
     BrowserAnimationsModule,
     SharedModule
   ],
-  providers: [],
+  providers: [JwtHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
