@@ -6,6 +6,15 @@
         <button mat-icon-button (click)="sidenav.toggle();">
             <mat-icon>menu</mat-icon>
         </button>
+
+         <span style="flex: 1 1 auto ;"></span>
+        <label style="font-size: 14px; margin-right: 10px;">{{userName}} |
+            {{userRol}}</label>
+
+          <button mat-icon-button (click)="logOutUser()">
+            <mat-icon>logout</mat-icon>
+        </button>
+
     </mat-toolbar-row>
 </mat-toolbar>
 
@@ -14,8 +23,33 @@
     <mat-sidenav #sidenav opened="true" mode="side" style="width: 200px;">
 
         <mat-nav-list>
-            <!-- adding all our menus -->
-            <mat-list-item routerLink="/pages/dashboard">
+
+            <mat-list-item *ngFor="let menu of menuList"
+                [routerLink]="menu.urlPath">
+                <mat-icon matListItemIcon>{{menu.icon}}</mat-icon>
+                <div mat-line>{{menu.name}}</div>
+            </mat-list-item>
+
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <!-- This is where the content goes = each and every component page is added -->
+    <mat-sidenav-content>
+        <div class="children">
+            <router-outlet></router-outlet>
+        </div>
+
+        <div class="footer">
+            <footer class="text-secondary">© Copyright by <strong>Hellen Torres</strong>
+                <p>All right reserved</p>
+            </footer>
+        </div>
+    </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+<!-- adding all our menus TESTING-->
+<!--   <mat-list-item routerLink="/pages/dashboard">
                 <mat-icon matListItemIcon>dashboard</mat-icon>
                 <div mat-line>DashBoard</div>
             </mat-list-item>
@@ -38,23 +72,4 @@
             <mat-list-item routerLink="/pages/sale_history">
                 <mat-icon matListItemIcon>edit_note</mat-icon>
                 <div mat-line>Sales history</div>
-            </mat-list-item>
-
-            <mat-list-item routerLink="/pages/report">
-                <mat-icon matListItemIcon>receipt</mat-icon>
-                <div mat-line>Reports</div>
-            </mat-list-item>
-
-        </mat-nav-list>
-    </mat-sidenav>
-
-    <!-- This is where the content goes = each and every component page is added -->
-    <mat-sidenav-content>
-        <div
-            style="height: 91vh; background-color: hsl(240, 38%, 29%); color: #fff; padding: 8px;">
-            <!-- <h1>System</h1> -->
-            <router-outlet></router-outlet>
-        </div>
-    </mat-sidenav-content>
-
-</mat-sidenav-container>
+            </mat-list-item> -->
