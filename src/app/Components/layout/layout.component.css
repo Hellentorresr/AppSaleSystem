@@ -1,0 +1,19 @@
+mat-sidenav-container{
+    background-color: #273c75;
+}
+
+.footer {
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    background-color: #192a56;
+    color: #fff;
+    padding-top: 5px;
+    width: 100%;
+}
+
+.children {
+    height: 91vh;
+    color: #fff;
+    padding: 8px;
+}
