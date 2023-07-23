@@ -93,7 +93,7 @@ export class SaleHistoryComponent implements OnInit, AfterViewInit {
     if (this.formSearch.value.searchBy === 'date') {
       startingDate = moment(this.formSearch.value.startingDate).format('DD/MM/YYYY');
       endDate = moment(this.formSearch.value.endDate).format('DD/MM/YYYY');
-      
+
       if (startingDate === 'invalid date' || endDate === 'invalid date') {
         this._util.showAlert('Please enter start date and end date', 'Error');
         return;
@@ -102,14 +102,18 @@ export class SaleHistoryComponent implements OnInit, AfterViewInit {
 
     //API Calling
     this._saleService.History(this.formSearch.value.searchBy, this.formSearch.value.number, startingDate, endDate).subscribe({
-      next: (data)=> {if(data.status)this.dataListSale = data.value; else this._util.showAlert('Please enter a value to search','Error')},
+      next: (data) => {
+        if (data.status && data.value.length > 0)
+          this.dataListSale = data.value;
+        else this._util.showAlert('No data found', 'Upps')
+      },
 
       error: () => this._util.showAlert('Unexpected error occured', 'Error')
     });
   }
 
-  showSaledetail(_sale: Sale){
-    this._dialog.open(ModalSaledetailsComponent,{
+  showSaledetail(_sale: Sale) {
+    this._dialog.open(ModalSaledetailsComponent, {
       data: _sale,
       disableClose: true,
       width: '700px'

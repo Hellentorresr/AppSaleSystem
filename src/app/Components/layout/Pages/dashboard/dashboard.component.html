@@ -1,1 +1,54 @@
-<p>dashboard works!</p>
+<h1>Dashboard- Sales report from last week</h1>
+
+<mat-card class="m-2 p-3">
+    <mat-card-content>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <mat-card>
+                        <mat-card-header>
+                            <div mat-card-avatar>
+                                <mat-icon color="accent">payments</mat-icon>
+                            </div>
+                            <mat-card-title class="text-primary">Total income</mat-card-title>
+                            <mat-card-subtitle>C$ / {{totalIncome}}</mat-card-subtitle>
+                        </mat-card-header>
+                    </mat-card>
+                </div>
+
+                <div class="col-md-4">
+                    <mat-card>
+                        <mat-card-header>
+                            <div mat-card-avatar>
+                                <mat-icon color="primary">sell</mat-icon>
+                            </div>
+                            <mat-card-title class="text-info">Total sales</mat-card-title>
+                            <mat-card-subtitle># {{salesTotal}}</mat-card-subtitle>
+                        </mat-card-header>
+                    </mat-card>
+                </div>
+
+                <div class="col-md-4">
+                    <mat-card>
+                        <mat-card-header>
+                            <div mat-card-avatar>
+                                <mat-icon color="accent">collections_bookmark</mat-icon>
+                            </div>
+                            <mat-card-title class="text-secondary">Total
+                                Products</mat-card-title>
+                            <mat-card-subtitle># {{totalProducts}}</mat-card-subtitle>
+                        </mat-card-header>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+
+        <mat-card class="mt-5">
+            <mat-card-content>
+                <div class="w-100" style="min-height: 400px;">
+                    <canvas id="chartBars"></canvas>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </mat-card-content>
+</mat-card>

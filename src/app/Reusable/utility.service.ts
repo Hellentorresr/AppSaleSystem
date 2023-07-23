@@ -4,13 +4,21 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar'; //To display simple alerts
 import { Session } from '../Interfaces/session'; // where I have the session schema defined
 
+//
+import { JwtHelperService } from '@auth0/angular-jwt';
+
 @Injectable({
   providedIn: 'root'
 })
 export class UtilityService {
-
+  private token!: string;
   //injecting the small alerts
-  constructor(private _snackBar: MatSnackBar) { }
+  constructor(private _snackBar: MatSnackBar, private jwtHelper: JwtHelperService) {
+    const storedToken = localStorage.getItem('token');
+    if (storedToken) {
+      this.token = storedToken;
+    }
+   }
 
   //
   showAlert(message: string, type: string) {
@@ -22,21 +30,53 @@ export class UtilityService {
 
   }
 
-  //
-  saveUserSession(userSession: Session) {
-    localStorage.setItem('user', JSON.stringify(userSession)); ////I will change this to work with JWT-- //user key name 
+  //saving Token
+  saveUserSession(token: string) {
+    this.token = token;
+    localStorage.setItem('token', token); ////I will change this to work with JWT-- //user key name 
   }
 
-  getUserSession() {
-    const dataAsString = localStorage.getItem("user"); //user key name 
-
-    const user = JSON.parse(dataAsString!); // exclamation mark = not null
-
-    return user;
+  getUserSession(): Session | null {
+    const token = localStorage.getItem('token'); // Token key name
+    if (!token) {
+      return null;
+    }
+    const session: Session = this.extractTokenInformation(token);
+    return session;
   }
 
-  deleteSession(){
-    localStorage.removeItem('user');//user key name 
+  isAuth(): boolean {
+    const token = localStorage.getItem('token'); // Token key name
+    if (this.jwtHelper.isTokenExpired(token) || !localStorage.getItem('token')) {
+      return false; 
+    }
+    else {
+      return true;
+    }
   }
 
+
+  // Method to extract token information
+  extractTokenInformation(token: string): Session {
+    const decodedToken = this.jwtHelper.decodeToken(token);
+
+    // Now you can access the information sent in the token
+    const userId = decodedToken['nameid'];
+    const fullName = decodedToken['unique_name'];
+    const email = decodedToken['email'];
+    const role = decodedToken['role'];
+
+    const session: Session = {
+      idUser: userId,
+      fullName: fullName,
+      email: email,
+      rolDescription: role
+    }
+    return session;
+  }
+
+  deleteSession() {
+    this.token = '';
+    localStorage.removeItem('token');//user key name 
+  }
 }

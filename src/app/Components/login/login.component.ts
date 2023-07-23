@@ -5,6 +5,7 @@ import { Router } from '@angular/router'; //This router will allow us to redirec
 import { Login } from 'src/app/Interfaces/login'; //importing the defined login schema
 import { UserService } from 'src/app/Services/user.service'; // HTTP CRUD requests
 import { UtilityService } from 'src/app/Reusable/utility.service';
+import { UsertwoService } from 'src/app/Services/usertwo.service';
 
 @Component({
   selector: 'app-login',
@@ -13,12 +14,12 @@ import { UtilityService } from 'src/app/Reusable/utility.service';
 })
 
 export class LoginComponent implements OnInit {
-  loginForm:any;
+  loginForm: any;
   hidePassword: boolean = true;
   showLoading: boolean = false;
 
   //injecting dependencies
-  constructor(fb: FormBuilder, private router: Router, private _userService: UserService, private _utility: UtilityService) {
+  constructor(fb: FormBuilder, private router: Router, private _userService: UsertwoService, private _utility: UtilityService) {
 
     this.loginForm = fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -40,15 +41,12 @@ export class LoginComponent implements OnInit {
     const request: Login = { email: this.loginForm.value.email, password: this.loginForm.value.password }
 
     this._userService.Login(request).subscribe({
-      next: (data) => {  
+      next: (data) => {
         if (data.status) {
-          this._utility.saveUserSession(data.value); //if status is true store it in the local storage
-          this.router.navigate(["pages"])
-          console.log(data.value);
+          this._utility.saveUserSession(data.value.token);  //if status is true store it in the local storage
+          this.router.navigate(["pages"]);
         }
-        else
-        {
-          //this._utility.showAlert('User account does not exist', 'Opps!');
+        else {
           this._utility.showAlert(data.message, 'Opps!');
         }
       },
@@ -57,7 +55,5 @@ export class LoginComponent implements OnInit {
 
       error: () => { this._utility.showAlert('An error occurred', 'Opps!'); }
     });
-
-    console.log(this.fc.email)
   }
 }

@@ -31,6 +31,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MomentDateModule } from '@angular/material-moment-adapter';//to change the date format
 
+
+import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -65,7 +68,9 @@ import { MomentDateModule } from '@angular/material-moment-adapter';//to change 
   ],
   providers: [
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    JwtHelperService,
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
   ]
 })
 export class SharedModule { }

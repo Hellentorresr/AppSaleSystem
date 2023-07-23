@@ -69,7 +69,6 @@ export class ModalProductComponent implements OnInit {
       active: parseInt(this.productForm.value.active)
     };
 
-    console.log(_product.stock);
     if (this.producData) {//update , if this var is not null
 
       //API calling
