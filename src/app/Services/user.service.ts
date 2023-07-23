@@ -13,27 +13,21 @@ import { User } from '../Interfaces/user';
 })
 export class UserService {
   private urlApi: string = `${environment.endPoint}User/`;  //the user endpoint
-
   private token = localStorage.getItem('token');
   private headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
 
-  constructor(private http: HttpClient) { } //dependency injection of http client 
+  constructor(private http: HttpClient) { console.log(this.token) } //dependency injection of http client 
 
-  //ADDING CRUD METHODS / OPERATIONS
+  //CRUD OPERATION methods
 
   List(): Observable<ResponseApi> {
-    
-    return this.http.get<ResponseApi>(`${this.urlApi}List`, { 'headers':this.headers }); //the final endpoint
-  }
 
-  Login(request: Login): Observable<ResponseApi> { //RESPONSEAPI is the response structure I declared
-
-    return this.http.post<ResponseApi>(`${this.urlApi}Login`, request); //the final endpoint
+    return this.http.get<ResponseApi>(`${this.urlApi}List`, { 'headers': this.headers }); //the final endpoint
   }
 
   Create(request: User): Observable<ResponseApi> { //RESPONSEAPI is the response structure I declared
 
-    return this.http.post<ResponseApi>(`${this.urlApi}CreateUser`, request); //the final endpoint
+    return this.http.post<ResponseApi>(`${this.urlApi}CreateUser`, request,{ 'headers': this.headers }); //the final endpoint
   }
 
   Update(request: User): Observable<ResponseApi> { //RESPONSEAPI is the response structure I declared
