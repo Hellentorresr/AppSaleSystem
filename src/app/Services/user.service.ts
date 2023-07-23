@@ -16,7 +16,7 @@ export class UserService {
   private token = localStorage.getItem('token');
   private headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
 
-  constructor(private http: HttpClient) { console.log(this.token) } //dependency injection of http client 
+  constructor(private http: HttpClient) {} //dependency injection of http client 
 
   //CRUD OPERATION methods
 

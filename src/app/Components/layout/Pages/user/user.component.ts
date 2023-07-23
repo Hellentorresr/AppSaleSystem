@@ -29,15 +29,13 @@ export class UserComponent implements OnInit, AfterViewInit {
 
   constructor(private dialog: MatDialog, private _userService: UserService, private _util: UtilityService) { }
 
-
   getUser() {
     this._userService.List().subscribe({
       next: (data) => {
         if (data.status) this.userListData.data = data.value //if data is true
         else this._util.showAlert('No data found', 'Error!');
       },
-
-      error: (error: any) => console.error('Error fetching users:', error)
+      error: (error: any) => console.error('Error fetching Users:', error)
     });
   }
 
@@ -93,7 +91,6 @@ export class UserComponent implements OnInit, AfterViewInit {
 
         });
       }
-
     });
   }
 }
