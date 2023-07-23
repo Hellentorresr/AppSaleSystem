@@ -4,12 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { environment } from './../environments/environment';
 import { LoginComponent } from './Components/login/login.component';
 import { LayoutComponent } from './Components/layout/layout.component';
 import { SharedModule } from './Reusable/shared/shared.module';
 
-import { JwtHelperService } from '@auth0/angular-jwt';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +22,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
     BrowserAnimationsModule,
     SharedModule
   ],
-  providers: [JwtHelperService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule {
